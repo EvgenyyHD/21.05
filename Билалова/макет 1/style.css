@@ -1,0 +1,122 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #F2F2F2;
+}
+
+.container{
+  max-width: 461px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 42px 0;
+}
+.cont2{
+  max-width: 380px;
+  margin: 0 auto;
+  background-color: #fff;
+  h4{
+    font-weight: 900;
+font-size: 20px;
+color: #171616;
+text-transform: uppercase;
+margin-bottom: 18px;
+  }
+}
+label{
+  font-weight: 400;
+font-size: 14px;
+color: #595959;
+}
+label.h{
+  font-weight: 700;
+  font-size: 16px;
+  color: #595959; 
+}
+
+.srokskid{
+  background-color: #f2f2f2;
+  margin-bottom: 17px;
+  .cont2{
+    background-color: #f2f2f2;
+  }
+  p{
+    font-weight: 400;
+font-size: 16px;
+color: #2d4872;
+  }
+  p.rem{
+    font-weight: 700;
+font-size: 18px;
+color: #2d4872;
+  }
+}
+.form{
+  form{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    }
+    input[type=number]{
+      border: 1px solid #ccc;
+  width: 203px;
+  height: 40px;
+  padding-left: 13px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #595959;
+  
+    }
+    button{
+      border-radius: 4px;
+  width: 133px;
+  height: 48px;
+  background: #6cac3d;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+    }
+  }
+
+  .vid, .tip, .kolch, .plosh, form{
+    margin-bottom: 17px;
+  }
+  .kolch{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    .otveti{
+      display: flex;
+      gap: 23px;
+    }
+  }
+
+.vid{
+  .otv2{
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    .firs{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
+hr{
+  background: #d6d6d6;
+  height: 1px;
+  margin-bottom: 18px;
+}
+.uff{
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 4px;
+}

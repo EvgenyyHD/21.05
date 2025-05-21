@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Билалова</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="cont2">
+        <h4>Рассчитайте стоимость ремонта</h4>
+        <div class="vid">
+          <form action="">
+            <label class="h">Вид ремонта: <br>
+            </label>
+              <div class="otv2">
+                <div class="firs">
+                  <label><input type="radio" class="radiobut" name="repairType" value="cosmetic" checked/> Косметический</label>
+                  <label><input type="radio" name="repairType" value="turnkey" class="radiobut"/> Под ключ</label>
+                </div>
+               <div class="firs">
+                <label><input type="radio" name="repairType" value="capital" class="radiobut"/> Капитальный </label>
+                <label><input type="radio" name="repairType" value="designer" class="radiobut"/> Дизайнерский </label>
+               </div>
+              </div>
+          </form>
+        </div>
+        <hr />
+        <div class="tip">
+          <label class="h">Тип вашей недвижимости: <br></label>
+          <form action="">
+            <label><input type="radio" name="propertyType" value="new" checked class="radiobut"/> Новостройка </label>
+            <label><input type="radio" name="propertyType" value="secondary" class="radiobut"/> Вторичное жилье </label>
+          </form>
+        </div>
+        <hr />
+        <div class="kolch">
+          <label class="h">Количество комнат: <br> </label>
+         <div class="otveti">
+          <label><input type="radio" name="rooms" value="1" checked class="radiobut"/> 1 </label>
+          <label><input type="radio" name="rooms" value="2" class="radiobut"/> 2 </label>
+          <label><input type="radio" name="rooms" value="3" class="radiobut"/> 3 </label>
+          <label><input type="radio" name="rooms" value="4" class="radiobut"/> 4 </label>
+         </div>
+        </div>
+        <hr />
+        <div class="plosh">
+          <div class="">
+            <label class="h">Площадь, м2:</label>
+            <div class="">
+                <input type="range" id="area" min="1" max="200" step="1" value="50" 
+                       class="">
+                <span id="areaValue">50</span>
+            </div>
+        </div>
+      </div>
+      <div class="srokskid">
+        <div class="cont2 uff">
+          <div class="srok">
+            <p>Срок ремонта:</p>
+            <p class="rem" id="repairTime">
+              до 34 дней
+            </p>
+          </div>
+          <div class="skid">
+            <p>Скидка составит:</p>
+            <p class="rem" id="discount">
+              23 765 руб
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <form action="">
+          <div class="numb">
+            <label class="h">Введите номер телефона <br></label>
+            <input type="tel" name="phone" placeholder="+7">
+          </div>
+          <button type="submit">Заказать</button>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

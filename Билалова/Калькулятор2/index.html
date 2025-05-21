@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-white">
+                    <h1 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-calculator mr-3"></i>
+                        Cost Calculator
+                    </h1>
+                </div>
+                
+                <div class="p-6">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Hours Needed</label>
+                        <div class="flex items-center">
+                            <input type="range" id="hours" min="1" max="100" value="10" 
+                                   class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500">
+                            <span id="hoursValue" class="ml-4 w-16 text-center font-bold text-blue-600">10</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-2">Hourly Rate ($)</label>
+                        <div class="flex items-center">
+                            <input type="range" id="rate" min="10" max="150" step="5" value="50" 
+                                   class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-purple-500">
+                            <span id="rateValue" class="ml-4 w-16 text-center font-bold text-purple-600">50</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 font-medium mb-3">Additional Options</label>
+                        
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="urgent" class="form-checkbox h-5 w-5 text-blue-500 rounded">
+                                <span class="ml-2 text-gray-700">Urgent project (+20%)</span>
+                            </label>
+                            
+                            <label class="flex items-center">
+                                <input type="checkbox" id="support" class="form-checkbox h-5 w-5 text-blue-500 rounded">
+                                <span class="ml-2 text-gray-700">Extended support (+$100)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600">Subtotal:</span>
+                            <span id="subtotal" class="font-bold">$500.00</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-600">Additional fees:</span>
+                            <span id="fees" class="font-bold">$0.00</span>
+                        </div>
+                        <div class="border-t border-gray-200 my-2"></div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-800 font-semibold">Total Cost:</span>
+                            <span id="total" class="text-2xl font-bold text-blue-600">$500.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button id="resetBtn" 
+                                class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
+                            <i class="fas fa-redo mr-2"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hoursInput = document.getElementById('hours');
+            const rateInput = document.getElementById('rate');
+            const urgentCheckbox = document.getElementById('urgent');
+            const supportCheckbox = document.getElementById('support');
+            const calculateBtn = document.getElementById('calculateBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const hoursValue = document.getElementById('hoursValue');
+            const rateValue = document.getElementById('rateValue');
+            const subtotalEl = document.getElementById('subtotal');
+            const feesEl = document.getElementById('fees');
+            const totalEl = document.getElementById('total');
+
+            function initCalculator() {
+                updateDisplay();
+                calculateCost();
+            }
+            
+            function updateDisplay() {
+                hoursValue.textContent = hoursInput.value;
+                rateValue.textContent = rateInput.value;
+            }
+            
+            function calculateCost() {
+                const hours = parseInt(hoursInput.value);
+                const rate = parseInt(rateInput.value);
+                let subtotal = hours * rate;
+                let fees = 0;
+                
+                if (urgentCheckbox.checked) {
+                    fees += subtotal * 0.2;
+                }
+                if (supportCheckbox.checked) {
+                    fees += 100;
+                }
+                
+                const total = subtotal + fees;
+                
+                subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+                feesEl.textContent = `$${fees.toFixed(2)}`;
+                totalEl.textContent = `$${total.toFixed(2)}`;
+            }
+            
+            function resetCalculator() {
+                hoursInput.value = 10;
+                rateInput.value = 50;
+                urgentCheckbox.checked = false;
+                supportCheckbox.checked = false;
+                updateDisplay();
+                calculateCost();
+            }
+            
+            hoursInput.addEventListener('input', function() {
+                updateDisplay();
+                calculateCost();
+            });
+            
+            rateInput.addEventListener('input', function() {
+                updateDisplay();
+                calculateCost();
+            });
+            
+            urgentCheckbox.addEventListener('change', calculateCost);
+            supportCheckbox.addEventListener('change', calculateCost);
+            calculateBtn.addEventListener('click', calculateCost);
+            resetBtn.addEventListener('click', resetCalculator);
+            
+            initCalculator();
+        });
+    </script>
+</body>
+</html>
